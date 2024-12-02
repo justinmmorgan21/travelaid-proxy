@@ -1,0 +1,13 @@
+{
+  "name": "travelaid-proxy",
+  "version": "1.0.0",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "axios": "^1.7.7",
+    "serpapi": "^2.1.0"
+  }
+}
