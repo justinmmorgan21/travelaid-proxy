@@ -10,10 +10,16 @@ const googleMapsKey = process.env.GOOGLE_MAPS_API_KEY;
 
 const server = createServer(async (req, res) => {
   
-  const allowed_domain = "http://localhost:5173"; // Specify the client's domain here
   const method = req.method.toUpperCase();
 
-  res.setHeader("Access-Control-Allow-Origin", allowed_domain);
+  const allowed_domains = [
+    "http://localhost:5173",          // Local development
+    "https://travelaid.onrender.com"  // Deployed frontend
+  ];
+  const origin = req.headers.origin;
+  if (allowed_domains.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
