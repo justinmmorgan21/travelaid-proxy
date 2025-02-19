@@ -68,6 +68,29 @@ const server = createServer(async (req, res) => {
       res.setHeader("Content-Type", "application/json");
       res.end(JSON.stringify({ error: error.message }));
     }
+  } else if (path === "/get-image") {
+    // Handle the request for image search through serpapi
+    const query = searchParams.get("query");
+    try {
+      const response = await getJson({
+        api_key: serpApiKey,
+        engine: "google_images",
+        q: query,
+        google_domain: "google.com",
+        hl: "en",
+        gl: "us",
+        device: "desktop",
+      });
+
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify(response));
+    } catch (error) {
+      console.log("ERROR");
+      res.statusCode = 500;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify({ error: error.message }));
+    }
 
   } else if (path === "/google-places-autocomplete") {
     // Handle the request for Google Places Autocomplete for airports being entered into input fields
