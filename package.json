@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.cjs",
   "scripts": {
-    "start": "node server.cjs"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.758.0",
