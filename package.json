@@ -1,7 +1,7 @@
 {
   "name": "travelaid-proxy",
   "version": "1.0.0",
-  "main": "server.cjs",
+  "main": "server.mjs",
   "scripts": {
     "start": "node server.mjs"
   },
